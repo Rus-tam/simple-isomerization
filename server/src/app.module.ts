@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppService } from './app.service';
-import { UploadDataService } from './upload_data/upload_data.service';
-import { UploadDataModule } from './upload_data/upload_data.module';
+import { SimulationDataService } from './simulation_data/simulation_data.service';
+import { SimulationDataModule } from './simulation_data/simulation_data.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 // @ts-ignore
@@ -29,9 +29,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         };
       },
     }),
-    UploadDataModule,
+    SimulationDataModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UploadDataService],
+  providers: [AppService, SimulationDataService],
 })
 export class AppModule {}
