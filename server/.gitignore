@@ -2,6 +2,7 @@
 /dist
 /node_modules
 .env
+src/upload_simulation_data_file/simulation_file/
 
 # Logs
 logs
