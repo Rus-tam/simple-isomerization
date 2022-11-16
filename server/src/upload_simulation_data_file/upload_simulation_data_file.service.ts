@@ -1,23 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { ensureDir, writeFile } from 'fs-extra';
 import { path } from 'app-root-path';
-import { FileElementResponse } from './dto/file_element.response';
-import * as encoding from 'encoding';
+import { IFileElement } from '../interfaces/IFileElement';
 
 @Injectable()
 export class UploadSimulationDataFileService {
-  async saveFile(files: Express.Multer.File[]) {
+  async saveFile(file: Express.Multer.File): Promise<IFileElement> {
     const uploadFolder = `${path}/src/upload_simulation_data_file/simulation_file`;
     await ensureDir(uploadFolder);
 
-    console.log(files);
+    await writeFile(`${uploadFolder}/${file.originalname}`, file.buffer);
 
-    const res: FileElementResponse[] = [];
-    for (let file of files) {
-      if (file.originalname.split('.').includes('csv')) {
-        // let text = encoding.convert(file.buffer, 'UTF-8', 'WINDOWS-1251');
-        await writeFile(`${uploadFolder}/${file.originalname}`, file.buffer);
-      }
-    }
+    return {
+      name: `${file.originalname}`,
+      url: `${uploadFolder}/${file.originalname}`,
+    };
   }
 }

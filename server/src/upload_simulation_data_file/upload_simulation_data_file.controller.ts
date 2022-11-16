@@ -1,5 +1,6 @@
 import {
   Controller,
+  ForbiddenException,
   HttpCode,
   Post,
   UploadedFile,
@@ -7,7 +8,8 @@ import {
 } from '@nestjs/common';
 import { UploadSimulationDataFileService } from './upload_simulation_data_file.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { FileElementResponse } from './dto/file_element.response';
+import { IFileElement } from '../interfaces/IFileElement';
+import { UploadSimulationDataErrors } from '../errors/uploadSimulationData.errors';
 
 @Controller()
 export class UploadSimulationDataFileController {
@@ -18,7 +20,15 @@ export class UploadSimulationDataFileController {
   @Post('upload-simulation-file')
   @HttpCode(200)
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(@UploadedFile() file: Express.Multer.File): Promise<void> {
-    return this.uploadSimulationDataFile.saveFile([file]);
+  async uploadFile(
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise<IFileElement> {
+    if (file.originalname.split('.').pop() === 'csv') {
+      return this.uploadSimulationDataFile.saveFile(file);
+    } else {
+      throw new ForbiddenException(
+        UploadSimulationDataErrors.FileExtensionError,
+      );
+    }
   }
 }
