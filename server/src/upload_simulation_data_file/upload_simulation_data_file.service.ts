@@ -11,9 +11,12 @@ export class UploadSimulationDataFileService {
 
     await writeFile(`${uploadFolder}/${file.originalname}`, file.buffer);
 
+    const data = file.buffer.toString().split('\n');
+
     return {
       name: `${file.originalname}`,
       url: `${uploadFolder}/${file.originalname}`,
+      buffer: data,
     };
   }
 }

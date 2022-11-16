@@ -5,6 +5,7 @@ import {
   Post,
   UploadedFile,
   UseInterceptors,
+  Get,
 } from '@nestjs/common';
 import { UploadSimulationDataFileService } from './upload_simulation_data_file.service';
 import { FileInterceptor } from '@nestjs/platform-express';

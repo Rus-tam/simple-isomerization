@@ -2,7 +2,7 @@ import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
 import { DeleteDateColumn } from 'typeorm';
 
 @Entity()
-export class DataEntity {
+export class Data {
   @PrimaryGeneratedColumn()
   id: number;
 

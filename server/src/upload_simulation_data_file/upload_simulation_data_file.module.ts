@@ -3,7 +3,9 @@ import { UploadSimulationDataFileService } from './upload_simulation_data_file.s
 import { UploadSimulationDataFileController } from './upload_simulation_data_file.controller';
 
 @Module({
+  imports: [],
   providers: [UploadSimulationDataFileService],
-  controllers: [UploadSimulationDataFileController]
+  controllers: [UploadSimulationDataFileController],
+  exports: [UploadSimulationDataFileService],
 })
 export class UploadSimulationDataFileModule {}

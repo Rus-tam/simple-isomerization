@@ -7,8 +7,6 @@ import { SimulationDataModule } from './simulation_data/simulation_data.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UploadSimulationDataFileModule } from './upload_simulation_data_file/upload_simulation_data_file.module';
 
-// @ts-ignore
-// @ts-ignore
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -34,6 +32,6 @@ import { UploadSimulationDataFileModule } from './upload_simulation_data_file/up
     UploadSimulationDataFileModule,
   ],
   controllers: [AppController],
-  providers: [AppService, SimulationDataService],
+  providers: [AppService],
 })
 export class AppModule {}
