@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { UploadSimulationDataFileService } from './upload_simulation_data_file.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { IFileElement } from '../interfaces/IFileElement';
+import { FileElementInterface } from '../interfaces/fileElement.interface';
 import { UploadSimulationDataErrors } from '../errors/uploadSimulationData.errors';
 
 @Controller()
@@ -23,7 +23,7 @@ export class UploadSimulationDataFileController {
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(
     @UploadedFile() file: Express.Multer.File,
-  ): Promise<IFileElement> {
+  ): Promise<FileElementInterface> {
     if (file.originalname.split('.').pop() === 'csv') {
       return this.uploadSimulationDataFile.saveFile(file);
     } else {

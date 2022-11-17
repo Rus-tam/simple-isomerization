@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { ensureDir, writeFile } from 'fs-extra';
 import { path } from 'app-root-path';
-import { IFileElement } from '../interfaces/IFileElement';
+import { FileElementInterface } from '../interfaces/fileElement.interface';
 import { SimulationDataService } from '../simulation_data/simulation_data.service';
 
 @Injectable()
 export class UploadSimulationDataFileService {
   constructor(private readonly simulationDataService: SimulationDataService) {}
 
-  async saveFile(file: Express.Multer.File): Promise<IFileElement> {
+  async saveFile(file: Express.Multer.File): Promise<FileElementInterface> {
     const uploadFolder = `${path}/src/upload_simulation_data_file/simulation_file`;
     await ensureDir(uploadFolder);
 

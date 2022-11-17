@@ -6,6 +6,7 @@ import { SimulationDataService } from './simulation_data/simulation_data.service
 import { SimulationDataModule } from './simulation_data/simulation_data.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UploadSimulationDataFileModule } from './upload_simulation_data_file/upload_simulation_data_file.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { UploadSimulationDataFileModule } from './upload_simulation_data_file/up
     }),
     SimulationDataModule,
     UploadSimulationDataFileModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
