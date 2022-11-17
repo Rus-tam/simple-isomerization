@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataEntity } from './entites/data.entity';
 import { Repository } from 'typeorm';
+import { UploadSimulationDataErrors } from '../errors/uploadSimulationData.errors';
 
 @Injectable()
 export class SimulationDataService {
@@ -31,7 +32,9 @@ export class SimulationDataService {
           });
           await this.dataEntityRepository.save(newUpload);
         } catch (e) {
-          console.log(e);
+          throw new BadRequestException(
+            UploadSimulationDataErrors.FileExtensionError,
+          );
         }
       }
     }
