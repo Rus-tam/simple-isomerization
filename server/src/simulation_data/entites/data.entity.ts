@@ -2,29 +2,29 @@ import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
 import { DeleteDateColumn } from 'typeorm';
 
 @Entity()
-export class Data {
+export class DataEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'real' })
   vesselVolume: number;
 
-  @Column()
+  @Column({ type: 'real' })
   feedTemperature: number;
 
-  @Column()
+  @Column({ type: 'real' })
   feedMassFlow: number;
 
-  @Column()
+  @Column({ type: 'real' })
   conversion: number;
 
-  @Column()
+  @Column({ type: 'real' })
   massFraction_trButene: number;
 
-  @Column()
+  @Column({ type: 'real' })
   massFraction_cisButene: number;
 
-  @Column()
+  @Column({ type: 'real' })
   feedMassDensity: number;
 
   @Column()

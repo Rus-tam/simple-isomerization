@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { SimulationDataService } from './simulation_data.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Data } from './entites/data.entity';
+import { DataEntity } from './entites/data.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Data])],
+  imports: [TypeOrmModule.forFeature([DataEntity])],
   providers: [SimulationDataService],
   exports: [SimulationDataService],
 })
