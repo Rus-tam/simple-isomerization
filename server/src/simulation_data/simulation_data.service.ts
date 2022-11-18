@@ -52,9 +52,7 @@ export class SimulationDataService {
     await this.dataEntityRepository.softRemove(allData);
   }
 
-  async findClosestValue(
-    initialValues: IInitialValuesInterface,
-  ): Promise<DataEntity[]> {
+  async findClosestValue(initialValues: IInitialValuesInterface) {
     const valueBelow = await this.dataEntityRepository.findOne({
       where: {
         vesselVolume: LessThanOrEqual(initialValues.vesselValue),
