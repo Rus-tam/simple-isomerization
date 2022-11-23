@@ -26,11 +26,12 @@ export class SimulationDataService {
           newUpload = this.dataEntityRepository.create({
             vesselVolume: parseFloat(rowArr[0]),
             feedTemperature: parseFloat(rowArr[1]),
+            prodTemperature: parseFloat(rowArr[7]),
             feedMassFlow: parseFloat(rowArr[2]) * 3600,
-            conversion: parseFloat(rowArr[3]),
-            massFraction_trButene: parseFloat(rowArr[4]),
-            massFraction_cisButene: parseFloat(rowArr[5]),
-            feedMassDensity: parseFloat(rowArr[6]),
+            massFraction_trButene: parseFloat(rowArr[3]),
+            massFraction_cisButene: parseFloat(rowArr[4]),
+            feedMassDensity: parseFloat(rowArr[5]),
+            prodMassDensity: parseFloat(rowArr[6]),
             createdAt: new Date(),
           });
           await this.dataEntityRepository.save(newUpload);

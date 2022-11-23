@@ -13,10 +13,10 @@ export class DataEntity {
   feedTemperature: number;
 
   @Column({ type: 'real' })
-  feedMassFlow: number;
+  prodTemperature: number;
 
   @Column({ type: 'real' })
-  conversion: number;
+  feedMassFlow: number;
 
   @Column({ type: 'real' })
   massFraction_trButene: number;
@@ -26,6 +26,9 @@ export class DataEntity {
 
   @Column({ type: 'real' })
   feedMassDensity: number;
+
+  @Column({ type: 'real' })
+  prodMassDensity: number;
 
   @Column()
   createdAt: Date;
